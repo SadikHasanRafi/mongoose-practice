@@ -1,5 +1,6 @@
 import express, {Express, Request, Response } from "express";
-import { UserRoute } from "./app/modules/user/user.route";
+import routes from "./app/routes/routes";
+
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const cors = require("cors");
 
@@ -9,11 +10,13 @@ app.use(cors());
  
 
 
-app.use("/app/v1/user",UserRoute)
 
  
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World!");
 });
+
+app.use("/api",routes)
+
 
 export default app;
